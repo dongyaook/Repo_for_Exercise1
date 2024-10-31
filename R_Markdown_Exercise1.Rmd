@@ -1,0 +1,50 @@
+---
+title: "R Markdown for Exsercise1"
+author: "anonymous"
+date: "2024-10-26"
+output: html_document
+---
+
+```{r setup, include=TRUE}
+```
+
+# Exercise 1
+## Pipeline 1&2
+
+```{r}
+
+# Define a function named 'ShowColumnTypes' with a single argument `data`
+# This function is used to show the type of each column
+ShowColumnTypes <- function(data) {
+  # apply the function across each column in the dataset ( ChatGPT told me the sapply function is useful here)
+  sapply(data, function(column) {
+    # get the data type of the current column 
+    class_type <- class(column)
+    # using "ifelse" to return a labels that can show data type  
+    return(ifelse(class_type == "numeric", "<dbl>", 
+                  # If type is numeric, return "<dbl>"
+                  ifelse(class_type == "factor", "<fct>",
+                         # If type is factor, return "<fct>"
+                         ifelse(class_type == "character", "<chr>",  
+                                # If type is character, return "<chr>"
+                                ifelse(class_type == "integer", "<int>",  
+                                       # If type is integer, return "<int>"
+                                       ifelse(class_type == "logical", "<lgl>",
+                                              # If type is logical, return "<lgl>"
+                                              class_type))))))#for other types, return the original class name  
+    })
+}
+
+
+
+# use a built-in R dataset as an example("mtcars")
+data <- "mtcars"
+ShowColumnTypes(mtcars)
+
+
+# another example("Titanic")
+data("Titanic")
+ShowColumnTypes(Titanic)
+
+##P.S: I know that this function may not change the data itself, such as doing calculations, but I think generating new information can meet the requirement of "input transformation"
+```
