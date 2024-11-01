@@ -55,23 +55,23 @@ ShowColumnTypes(Titanic)
 ```{r}
 #Define a function named 'SumColumns' with a single argument 'data_new'
 # This function is used to show the sum of each column
-sumColumns <- function(data) {
+sumColumns <- function(data_new) {
   # determine which columns are numeric
-  colums_numeric <- sapply(data, is.numeric)
+  colums_numeric <- sapply(data_new, is.numeric)
   # Calculate the sum of each numeric column
-  column_sums <- colSums(data[, colums_numeric, drop = FALSE])
+  column_sums <- colSums(data_new[, colums_numeric, drop = FALSE])
   
   # Return the sums of each column
   return(column_sums)
 }
 
 # use a built-in R dataset as an example("ChickWeight")
-data <- "ChickWeight"
+data_new <- "ChickWeight"
 sumColumns(ChickWeight)
 
 
 # another example("CO2")
-data <- "CO2"
+data_new <- "CO2"
 sumColumns(CO2)
 
 
