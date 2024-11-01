@@ -48,3 +48,32 @@ ShowColumnTypes(Titanic)
 
 ##P.S: I know that this function may not change the data itself, such as doing calculations, but I think generating new information can meet the requirement of "input transformation"
 ```
+
+
+## Pipeline 3&4
+
+```{r}
+#Define a function named 'SumColumns' with a single argument 'data_new'
+# This function is used to show the sum of each column
+sumColumns <- function(data) {
+  # determine which columns are numeric
+  colums_numeric <- sapply(data, is.numeric)
+  # Calculate the sum of each numeric column
+  column_sums <- colSums(data[, colums_numeric, drop = FALSE])
+  
+  # Return the sums of each column
+  return(column_sums)
+}
+
+# use a built-in R dataset as an example("ChickWeight")
+data <- "ChickWeight"
+sumColumns(ChickWeight)
+
+
+# another example("CO2")
+data <- "CO2"
+sumColumns(CO2)
+
+
+```
+
