@@ -401,6 +401,31 @@ ShowColumnTypes(Titanic)</code></pre>
 ## [28] &quot;&lt;dbl&gt;&quot; &quot;&lt;dbl&gt;&quot; &quot;&lt;dbl&gt;&quot; &quot;&lt;dbl&gt;&quot; &quot;&lt;dbl&gt;&quot;</code></pre>
 <pre class="r"><code>##P.S: I know that this function may not change the data itself, such as doing calculations, but I think generating new information can meet the requirement of &quot;input transformation&quot;</code></pre>
 </div>
+<div id="pipeline-34" class="section level2">
+<h2>Pipeline 3&amp;4</h2>
+<pre class="r"><code>#Define a function named &#39;SumColumns&#39; with a single argument &#39;data_new&#39;
+# This function is used to show the sum of each column
+sumColumns &lt;- function(data_new) {
+  # determine which columns are numeric
+  colums_numeric &lt;- sapply(data_new, is.numeric)
+  # Calculate the sum of each numeric column
+  column_sums &lt;- colSums(data_new[, colums_numeric, drop = FALSE])
+  
+  # Return the sums of each column
+  return(column_sums)
+}
+
+# use a built-in R dataset as an example(&quot;ChickWeight&quot;)
+data_new &lt;- &quot;ChickWeight&quot;
+sumColumns(ChickWeight)</code></pre>
+<pre><code>## weight   Time 
+##  70411   6195</code></pre>
+<pre class="r"><code># another example(&quot;CO2&quot;)
+data_new &lt;- &quot;CO2&quot;
+sumColumns(CO2)</code></pre>
+<pre><code>##    conc  uptake 
+## 36540.0  2285.9</code></pre>
+</div>
 </div>
 
 
